@@ -11,7 +11,7 @@ def left_right_factors(n):
     limit = math.sqrt(2 * n)
     
     left = 1
-    right = n
+    right = n + 1
     
     def choose_factors(factorization, odd):
         global left, right
@@ -35,8 +35,12 @@ def left_right_factors(n):
                 choose_factors(copy, odd * i)
     
     choose_factors(factorization, 1)
-        
+            
     L_left = int(n / left + (left - 1) / 2)
+    
+    if right == n + 1:
+        return (left, "N/A", "left", L_left)
+    
     L_right = int(n / right + (right - 1) / 2)
     
     if L_left < L_right:
